@@ -1,13 +1,13 @@
 //
-//  diskutils.cpp
-//  diskutils
+//  DiskUtils.cpp
+//  DiskUtils
 //
 //  Created by dikra-prasetya on 3/28/16.
+//  Updated by Wong Yan Zhi on 4/22/24.
 //  Copyright © 2016 dikra-prasetya. All rights reserved.
 //
 
-
-#include "diskutils.hpp"
+#include "DiskUtils.hpp"
 
 int getTotalDiskSpace(){
     struct statfs statf;
@@ -15,7 +15,7 @@ int getTotalDiskSpace(){
     statfs(".", &statf);
     
     char buf[12];
-    sprintf(buf, "%llu", statf.f_blocks * statf.f_bsize / 1048576ULL );
+    snprintf(buf, sizeof(buf), "%llu", (unsigned long long)(statf.f_blocks * statf.f_bsize / 1048576ULL));
     int ret;
     sscanf(buf, "%d", &ret);
     
@@ -28,7 +28,7 @@ int getAvailableDiskSpace(){
     statfs(".", &statf);
     
     char buf[12];
-    sprintf(buf, "%llu", statf.f_bavail * statf.f_bsize /1048576ULL);
+    snprintf(buf, sizeof(buf), "%llu", (unsigned long long)(statf.f_bavail * statf.f_bsize / 1048576ULL));
     int ret;
     sscanf(buf, "%d", &ret);
     
@@ -41,7 +41,7 @@ int getBusyDiskSpace(){
     statfs(".", &statf);
     
     char buf[12];
-    sprintf(buf, "%llu", (statf.f_blocks - statf.f_bfree) * statf.f_bsize /1048576ULL);
+    snprintf(buf, sizeof(buf), "%llu", (unsigned long long)((statf.f_blocks - statf.f_bfree) * statf.f_bsize / 1048576ULL));
     int ret;
     sscanf(buf, "%d", &ret);
     

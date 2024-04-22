@@ -1,8 +1,9 @@
 //
-//  diskutils.hpp
-//  diskutils
+//  DiskUtils.hpp
+//  DiskUtils
 //
 //  Created by dikra-prasetya on 3/28/16.
+//  Updated by Wong Yan Zhi on 4/22/24.
 //  Copyright © 2016 dikra-prasetya. All rights reserved.
 //
 
@@ -21,4 +22,4 @@ extern "C" {
 }
 
 
-#endif /* diskutils_hpp */
+#endif /* DiskUtils_hpp */
